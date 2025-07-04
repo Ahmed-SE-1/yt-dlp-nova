@@ -1,12 +1,11 @@
 const express = require('express');
 const app = express();
-
-const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 app.get('/', (req, res) => {
-  res.send('🚀 Hello from Node.js on Fly.io!');
+  res.send('Server is running on Fly.io!');
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
