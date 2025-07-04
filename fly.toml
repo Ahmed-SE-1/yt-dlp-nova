@@ -1,20 +1,12 @@
-app = "simple-node-app"
-primary_region = "ams"
+app = "your-app-name"  # Replace with the app name from `fly launch`
 
 [build]
-  dockerfile = "Dockerfile"
 
 [env]
-  PORT = "8080"
 
-[[services]]
+[http_service]
   internal_port = 8080
-  protocol = "tcp"
-
-  [[services.ports]]
-    handlers = ["http"]
-    port = 80
-
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  processes = ["app"]
