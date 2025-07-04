@@ -1,21 +1,18 @@
 # Use official Node.js image
 FROM node:18
 
-# Create app directory
+# Set working directory
 WORKDIR /app
 
-# Install app dependencies
+# Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install
 
-# Bundle app source
+# Copy app source
 COPY . .
 
-# Set environment port
-ENV PORT 8080
-
-# Expose the port Fly.io expects
+# Expose port (Fly defaults to 8080)
 EXPOSE 8080
 
 # Start the app
-CMD [ "npm", "start" ]
+CMD ["node", "server.js"]
